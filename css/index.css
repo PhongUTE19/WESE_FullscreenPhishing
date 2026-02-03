@@ -1,0 +1,42 @@
+:root {
+  --text-color: #f0f0f0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ececec;
+  font-family: Arial, sans-serif;
+}
+
+.big-button {
+  padding: 40px 80px;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff004c, #ff8a00);
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+.big-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+
+.big-button:active {
+  transform: scale(0.98);
+}

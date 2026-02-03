@@ -99,6 +99,7 @@ $(function() {
     // Trigger fullscreen
     requestFullScreen();
 
+    $('#spoofFrame').attr('src', 'phish.html');
     // Set target site to proper height, based on window size
     $('#spoofSite').css({
       top: $('#spoofHeader').height(),

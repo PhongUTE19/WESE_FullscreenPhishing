@@ -1,0 +1,101 @@
+.card {
+    position: relative;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+
+    opacity: 0;
+    transform: scale(0.95);
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+    z-index: -1;
+}
+
+.card:hover::before {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+
+.thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* YouTube ratio */
+    background: #333;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+}
+
+.thumb .duration {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 2px 4px;
+    opacity: 80%;
+    padding: 4px;
+
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 550;
+    color: #fff;
+}
+
+.description {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #444;
+    flex-shrink: 0;
+}
+
+.card-text {
+    margin: 5px 0;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    max-height: 2.6em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.channel {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.stats {
+    font-size: 14px;
+    color: #aaa;
+}
