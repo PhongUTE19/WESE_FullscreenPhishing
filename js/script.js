@@ -22,10 +22,10 @@ function playFailSound() {
 }
 
 
-$(function() {
+$(function () {
 
   // Preload target site image
-  $('#spoofSite img').each(function(i, img) {
+  $('#spoofSite img').each(function (i, img) {
     var temp = new Image();
     temp.src = img.src;
   });
@@ -64,7 +64,7 @@ $(function() {
 
   // Errors?
   if (errors.length) {
-    $.each(errors, function(i, error) {
+    $.each(errors, function (i, error) {
       errorStr += error;
       if (i != errors.length - 1) {
         errorStr += "<br><br>";
@@ -73,7 +73,7 @@ $(function() {
   }
 
   // Set class on html element that represents the fullscreen state
-  $(document).on('fullscreenchange', function(test) {
+  $(document).on('fullscreenchange', function (test) {
     if (document.fullscreenEnabled) {
       $('html').addClass('fullscreened').removeClass('not-fullscreened');
     } else {
@@ -84,8 +84,8 @@ $(function() {
   $(document).trigger('fullscreenchange');
 
   // Handle click on target link
-  $('html').on('click', '.spoofLink', function(e) {
-    
+  $('html').on('click', '.spoofLink', function (e) {
+
     // Prevent navigation to legit link
     e.preventDefault();
     e.stopPropagation();
@@ -105,15 +105,36 @@ $(function() {
       top: $('#spoofHeader').height(),
       height: $(window).height()
     });
-
-    // Callout when the user clicks on something from fake UI
-    $('html').on('click.spoof', function() {
-      playFailSound();
-      $('#spoofHeader').stop().effect('shake', function() {
-        $.facebox({div: '#phished'});
-      });
-    });
   });
 
+  function triggerPhished() {
+    // popup + sound (sound có thể bị browser chặn nếu không coi là user gesture)
+    playFailSound();
+    $('#spoofHeader').stop().effect('shake', function () {
+      $.facebox({ div: '#phished' });
+    });
+  }
+
+  function fixLayoutAfterFullscreen() {
+    const container = document.getElementById('spoofSite');
+
+    container.style.position = 'fixed';
+    container.style.width = '100vw';
+    // container.style.height = 'calc(100vh - ' + headerHeight + 'px)'; // OS bar
+  }
+
+  window.addEventListener('message', function (e) {
+    if (e.data === 'PHISHED_CLICK') {
+      triggerPhished();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', function () {
+    if (document.fullscreenElement) {
+      requestAnimationFrame(() => {
+        fixLayoutAfterFullscreen();
+      });
+    }
+  });
 });
 

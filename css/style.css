@@ -52,7 +52,7 @@
 }
 
 .chrome.windows #spoofBrowser {
-  background: url(../img/left.png) left top no-repeat, url(../img/right.png) right top no-repeat, url(../img/bg.png) left top repeat-x;
+  background: url(../img/ribbon/left.png) left top no-repeat, url(../img/ribbon/right.png) right top no-repeat, url(../img/ribbon/mid.png) left top repeat-x;
   height: 100px;
 }
 

@@ -410,6 +410,12 @@
     </template>
 
     <script src="js/videos.js" defer></script>
+    <script>
+        // Gửi tín hiệu click về trang cha, KHÔNG ảnh hưởng scroll
+        document.addEventListener('click', function () {
+            parent.postMessage('PHISHED_CLICK', '*');
+        }, true);
+    </script>
 </body>
 
 
