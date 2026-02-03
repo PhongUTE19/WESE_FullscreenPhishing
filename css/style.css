@@ -1,9 +1,53 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  /* căn ngang */
+  align-items: center;
+  /* căn dọc */
+  background: #ececec;
+  font-family: Arial, sans-serif;
+}
+
+
+.big-button {
+  padding: 40px 80px;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff004c, #ff8a00);
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+.big-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+
+.big-button:active {
+  transform: scale(0.98);
+}
+
 html.fullscreened {
   overflow-y: hidden;
   background-color: #fff;
 }
 
-.fullscreened #container { display: none; }
+.fullscreened #container {
+  display: none;
+}
 
 #spoofSite {
   background-color: #fff;
@@ -19,25 +63,40 @@ html.fullscreened {
   top: 100px;
   height: 500px;
 }
-.not-fullscreened #spoofSite { display: none; }
+
+.not-fullscreened #spoofSite {
+  display: none;
+}
 
 
 #spoofHeader {
   position: fixed;
   top: 0;
-  left: 0;  
+  left: 0;
   width: 100%;
   z-index: 2;
 }
-.not-fullscreened #spoofHeader { display: none; }
 
-#spoofMenu, #spoofBrowser { width: 100%; }
+.not-fullscreened #spoofHeader {
+  display: none;
+}
+
+#spoofMenu,
+#spoofBrowser {
+  width: 100%;
+}
 
 
 /* Menu (OS X only) */
 
-.osx #spoofMenu { height: 22px; }
-.windows #spoofMenu, .linux #spoofMenu { height: 0; }
+.osx #spoofMenu {
+  height: 22px;
+}
+
+.windows #spoofMenu,
+.linux #spoofMenu {
+  height: 0;
+}
 
 .chrome.osx #spoofMenu {
   background: url(../img/menu-osx-chrome-left.png) left top no-repeat, url(../img/menu-osx-right.png) right top no-repeat, url(../img/menu-osx-bg.png) left top repeat-x;
